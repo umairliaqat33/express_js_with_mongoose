@@ -14,7 +14,7 @@ app.get("/api/users", async (req, res) => {
     const users = await User.find({});
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: "Error" });
+    res.status(500).json(error);
   }
 });
 app.get("/api/users/:id", async (req, res) => {
@@ -24,7 +24,7 @@ app.get("/api/users/:id", async (req, res) => {
     const users = await User.findById(id);
     res.status(200).json(users);
   } catch (error) {
-    res.status(500).json({ message: "Error" });
+    res.status(500).json(error);
   }
 });
 
@@ -42,7 +42,7 @@ app.put("/api/users/:id", async (req, res) => {
 
     res.status(200).json(userAfterUpdate);
   } catch (error) {
-    res.status(500).json({ message: "Error" });
+    res.status(500).json(error);
   }
 });
 
@@ -58,18 +58,17 @@ app.delete("/api/users/:id", async (req, res) => {
 
     res.status(200).json({ message: "User Deleted" });
   } catch (error) {
-    res.status(500).json({ message: "Error" });
+    res.status(500).json(error);
   }
 });
 
 app.post("/api/users", async (req, res) => {
   try {
-    console.log(req.body);
     const user = await User.create(req.body);
     res.status(200).json(user);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Error" });
+    res.status(500).json(error);
   }
 });
 
