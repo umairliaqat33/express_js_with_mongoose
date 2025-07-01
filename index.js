@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import User from "./models/user_model.js";
 
 const app = express();
+
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -17,6 +18,7 @@ app.get("/api/users", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
 app.get("/api/users/:id", async (req, res) => {
   try {
     const id = req.params.id;
